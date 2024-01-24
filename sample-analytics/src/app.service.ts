@@ -10,6 +10,10 @@ export class AppService {
     return 'Hello World!';
   }
 
+  getAnalytics() {
+    return this.analytics;
+  }
+
   handleUserCreated(data: CreateUserEvent) {
     console.log('handleUserCreated - ANALYTICS', data);
     this.analytics.push({

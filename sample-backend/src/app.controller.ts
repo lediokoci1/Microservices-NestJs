@@ -6,10 +6,13 @@ import { CreateUserRequest } from './create-user-request.dto';
 export class AppController {
   constructor(private readonly appService: AppService) { }
 
+
   @Get()
-  getHello(): string {
-    return this.appService.getHello();
+  getAnalytics() {
+    console.log('GET Analytics - BACKEND: ', this.appService.getAnalytics())
+    return this.appService.getAnalytics();
   }
+
 
   @Post()
   createUser(@Body() createUserRequest: CreateUserRequest) {

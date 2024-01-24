@@ -7,15 +7,14 @@ import { CreateUserEvent } from './create-user.event';
 export class AppService {
   private readonly users: any[] = []
 
-  constructor(@Inject('COMMUNICATION') private readonly communicationClient: ClientProxy) {
-
-  }
+  constructor(@Inject('COMMUNICATION') private readonly communicationClient: ClientProxy) { }
 
   getHello(): string {
     return 'Hello World!';
   }
 
   createUser(createUserRequest: CreateUserRequest) {
+    console.log('createUser - Backend', createUserRequest)
     // Emit an event in user creation
     this.users.push(createUserRequest)
     this.communicationClient.emit('user_created', new CreateUserEvent(createUserRequest.email))
